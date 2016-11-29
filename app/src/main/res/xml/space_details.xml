@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns:android="http://schemas.android.com/apk/res/android">
+    <entry
+        android:name="attribute test 1"
+        android:key="key test 1"
+        android:summary="summary test 1"/>
+    <entry
+        android:name="attribute test 2"
+        android:key="key test 2"
+        android:summary="summary test 2"/>
+</feed>

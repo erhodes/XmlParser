@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns:android="http://schemas.android.com/apk/res/android">
+    <entry>
+        <title>Title 1</title>
+        <key>Key1</key>
+        <summary>Summary1</summary>
+    </entry>
+    <entry>
+        <title>Title 2</title>
+        <key>Key2</key>
+        <summary>Summary2</summary>
+    </entry>
+</feed>
