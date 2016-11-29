@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+/*
     public void pullUsingRaw() {
         DetailsXmlParser parser = new DetailsXmlParser();
         //XmlResourceParser xmlParser = getResources().getXml(R.xml.space_details);
@@ -58,7 +58,7 @@ public class MainActivity extends AppCompatActivity {
             e.printStackTrace();
         }
     }
-
+*/
     public class EntryAdapter extends ArrayAdapter<Entry> {
 
 
@@ -66,24 +66,9 @@ public class MainActivity extends AppCompatActivity {
             super(context, resource, entries);
         }
 
-        private class ViewHolder {
-            TextView textView;
-        }
         @Override
         public View getView(int position, View convertView, ViewGroup parent) {
-            ViewHolder holder;
-            if (convertView == null) {
-                LayoutInflater inflater = getLayoutInflater();
-                convertView = inflater.inflate(R.layout.entry_view, null);
-                holder = new ViewHolder();
-                holder.textView = (TextView)convertView.findViewById(R.id.textView);
-                convertView.setTag(holder);
-            } else {
-                holder = (ViewHolder)convertView.getTag();
-            }
-            holder.textView.setText(getItem(position).toString());
-
-            return convertView;
+            return getItem(position).getView(convertView, getLayoutInflater(), getContext());
         }
     }
 }

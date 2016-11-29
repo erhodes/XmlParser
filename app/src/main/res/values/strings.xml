@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">XMLParser</string>
+
+    <string name="test_string">Such a test string</string>
+    <string name="resource_string">this string is a resource</string>
 </resources>
