@@ -29,6 +29,10 @@ public class SwitchEntry extends Entry {
         }
     }
 
+    public boolean isChecked() {
+        return mSwitch == null? false : mSwitch.isChecked();
+    }
+
     @Override
     public View getView(View convertView, LayoutInflater inflater, Context context) {
         ViewHolder holder;
@@ -41,7 +45,12 @@ public class SwitchEntry extends Entry {
             mSwitch = new Switch(context);
             mSwitch.setClickable(false);
             mWidgetView.addView(mSwitch);
-
+            convertView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClicked();
+                }
+            });
             convertView.setTag(holder);
         } else {
             holder = (ViewHolder)convertView.getTag();

@@ -1,38 +1,39 @@
 package com.erhodes.xmlparser;
 
 import android.content.Context;
-import android.content.res.XmlResourceParser;
-import android.support.annotation.XmlRes;
+import android.os.UserHandle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.util.Log;
-import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.TextView;
 
 import org.xmlpull.v1.XmlPullParserException;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
-    ListView mListView;
-    EntryAdapter mAdapter;
+public class MainActivity extends AppCompatActivity implements Entry.OnChangeListener{
+    MenuScreen mMenuScreen;
+    SpacesManager mSpacesManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mListView = (ListView)findViewById(R.id.listView);
+        mSpacesManager = new SpacesManager(this);
 
+        mMenuScreen = (MenuScreen)findViewById(R.id.listView);
+        mMenuScreen.addEntriesFromXml(R.xml.space_details);
 
-        ResourceXmlPuller resourceParser = new ResourceXmlPuller();
+        Entry bluetoothEntry = mMenuScreen.findEntry("bluetooth_restriction");
+        bluetoothEntry.setOnChangeListener(this);
+/*
+        ResourceXmlParser resourceParser = new ResourceXmlParser();
         try {
             List<Entry> entries = resourceParser.parse(this);
             Log.d("Eric","read in " + entries.size() + " entries");
@@ -41,6 +42,19 @@ public class MainActivity extends AppCompatActivity {
         } catch (XmlPullParserException | IOException e) {
             Log.d("Eric","that's a problem");
             e.printStackTrace();
+        }
+        */
+    }
+
+    @Override
+    public void onEntryChanged(Entry entry, Object newValue) {
+        if (entry instanceof SwitchEntry) {
+            boolean isChecked = (Boolean)newValue;
+            if (isChecked) {
+                mSpacesManager.addSpaceRestriction(0, entry.mKey);
+            } else {
+                mSpacesManager.clearSpaceRestriction(0, entry.mKey);
+            }
         }
     }
 /*
@@ -59,16 +73,5 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 */
-    public class EntryAdapter extends ArrayAdapter<Entry> {
 
-
-        public EntryAdapter(Context context, int resource, List<Entry> entries) {
-            super(context, resource, entries);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            return getItem(position).getView(convertView, getLayoutInflater(), getContext());
-        }
-    }
 }

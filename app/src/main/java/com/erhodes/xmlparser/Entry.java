@@ -26,8 +26,16 @@ public class Entry {
         mClickListener = listener;
     }
 
+    public OnClickListener getOnClickListener() {
+        return mClickListener;
+    }
+
     public void setOnChangeListener(OnChangeListener listener) {
         mChangeListener = listener;
+    }
+
+    public OnChangeListener getOnChangeListener() {
+        return mChangeListener;
     }
 
     public class ViewHolder {
