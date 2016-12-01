@@ -23,22 +23,25 @@ public class ResourceXmlParser {
 
     public static final String TAG_ENTRY = "entry";
     public static final String TAG_SWITCH_ENTRY = "switch_entry";
+    public static final String TAG_ENTRY_GROUP = "entry_group";
+    public static final String TAG_DIALOG_ENTRY = "dialog_entry";
 
     public static final String ATTRIBUTE_NAME = "name";
     public static final String ATTRIBUTE_KEY = "key";
     public static final String ATTRIBUTE_SUMMARY = "summary";
 
     private Context mContext;
+    private MenuScreen mMenuScreen;
 
-    public List<Entry> parse(Context context, int resId) throws XmlPullParserException, IOException {
+    public List<Entry> parse(Context context, MenuScreen menuScreen, int resId) throws XmlPullParserException, IOException {
         mContext = context;
+        mMenuScreen = menuScreen;
         ArrayList<Entry> entries = new ArrayList<>();
         XmlResourceParser parser = context.getResources().getXml(resId);
         parser.next();
 
         int eventType = parser.getEventType();
-        while (eventType != XmlPullParser.END_DOCUMENT)
-        {
+        while (eventType != XmlPullParser.END_DOCUMENT) {
             if(eventType == XmlPullParser.START_TAG) {
                 //Log.d("Eric","start tag with name " + parser.getName() + " with attributes " + parser.getAttributeCount());
                 if (parser.getName().equals(TAG_ENTRY)) {
@@ -48,6 +51,10 @@ public class ResourceXmlParser {
                     entries.add(readEntry(parser));
                 } else if (parser.getName().equals(TAG_SWITCH_ENTRY)) {
                     entries.add(readSwitchEntry(parser));
+                } else if (parser.getName().equals(TAG_ENTRY_GROUP)) {
+                    entries.add(readEntryGroup(parser));
+                } else if (parser.getName().equals(TAG_DIALOG_ENTRY)) {
+                    entries.add(readDialogEntry(parser));
                 }
             }
             eventType = parser.next();
@@ -81,5 +88,41 @@ public class ResourceXmlParser {
         String summary = getStringResource(parser, XML_NAMESPACE_ANDROID, ATTRIBUTE_SUMMARY);
 
         return new SwitchEntry(key, name, summary);
+    }
+
+    private Entry readDialogEntry(XmlResourceParser parser) {
+        String name = getStringResource(parser, XML_NAMESPACE_ANDROID, ATTRIBUTE_NAME);
+        String key = parser.getAttributeValue(XML_NAMESPACE_ANDROID, ATTRIBUTE_KEY);
+        String summary = getStringResource(parser, XML_NAMESPACE_ANDROID, ATTRIBUTE_SUMMARY);
+
+        return new DialogEntry(key, name, summary, mContext, mMenuScreen);
+    }
+
+    private Entry readEntryGroup(XmlResourceParser parser) throws XmlPullParserException, IOException {
+        Log.d("Eric","start tag?" + (parser.getEventType() == XmlPullParser.START_TAG) + "; namespace " + parser.getNamespace() + "; name " + parser.getName());
+        parser.require(XmlPullParser.START_TAG, null, TAG_ENTRY_GROUP);
+        String name = getStringResource(parser, XML_NAMESPACE_ANDROID, ATTRIBUTE_NAME);
+        String key = parser.getAttributeValue(XML_NAMESPACE_ANDROID, ATTRIBUTE_KEY);
+        String summary = getStringResource(parser, XML_NAMESPACE_ANDROID, ATTRIBUTE_SUMMARY);
+
+        ArrayList<Entry> entries = new ArrayList<>();
+        int eventType = parser.next();
+        while (!(eventType == XmlPullParser.END_TAG && parser.getName().equals(TAG_ENTRY_GROUP))) {
+            if(eventType == XmlPullParser.START_TAG) {
+                //Log.d("Eric","start tag with name " + parser.getName() + " with attributes " + parser.getAttributeCount());
+                if (parser.getName().equals(TAG_ENTRY)) {
+//                    Log.d("Eric","entry with name " + parser.getAttributeName(0) + " and value " + parser.getAttributeValue(XML_NAMESPACE_ANDROID, "name"));
+//                    Log.d("Eric","namespace " + parser.getNamespace());
+//                    Log.d("Eric","attribute namespace " + parser.getAttributeNamespace(0));
+                    entries.add(readEntry(parser));
+                } else if (parser.getName().equals(TAG_SWITCH_ENTRY)) {
+                    entries.add(readSwitchEntry(parser));
+                } else if (parser.getName().equals(TAG_ENTRY_GROUP)) {
+                    entries.add(readEntryGroup(parser));
+                }
+            }
+            eventType = parser.next();
+        }
+        return new EntryGroup(key, name, summary, entries);
     }
 }

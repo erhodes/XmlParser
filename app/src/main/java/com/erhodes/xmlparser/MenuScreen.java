@@ -1,6 +1,8 @@
 package com.erhodes.xmlparser;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -21,25 +23,34 @@ import java.util.List;
 public class MenuScreen extends ListView {
     private static final String TAG = MenuScreen.class.getSimpleName();
 
-    private LayoutInflater mLayoutInflater;
     private List<Entry> mEntries;
     private EntryAdapter mAdapter;
 
     public MenuScreen(Context context, AttributeSet attrs) {
         super(context, attrs);
-        mLayoutInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
     public void addEntriesFromXml(int resId) {
         ResourceXmlParser parser = new ResourceXmlParser();
         try {
-            mEntries = parser.parse(getContext(), resId);
-            mAdapter = new EntryAdapter(getContext(), 0, mEntries);
+            mEntries = parser.parse(getContext(), this, resId);
+            mAdapter = new EntryAdapter(getContext(), mEntries);
             setAdapter(mAdapter);
         } catch (XmlPullParserException | IOException e) {
             Log.d(TAG,"Error inflating xml");
             e.printStackTrace();
         }
+    }
+
+    public void update() {
+        mAdapter.notifyDataSetChanged();
+        invalidate();
+    }
+
+    public void removeEntry(Entry entry) {
+        mEntries.remove(entry);
+        mAdapter = new EntryAdapter(getContext(), mEntries);
+        setAdapter(mAdapter);
     }
 
     /**
@@ -54,17 +65,5 @@ public class MenuScreen extends ListView {
             }
         }
         return null;
-    }
-
-    public class EntryAdapter extends ArrayAdapter<Entry> {
-
-        public EntryAdapter(Context context, int resource, List<Entry> entries) {
-            super(context, resource, entries);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-            return getItem(position).getView(convertView, mLayoutInflater, getContext());
-        }
     }
 }

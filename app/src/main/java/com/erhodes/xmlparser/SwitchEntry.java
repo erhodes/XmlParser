@@ -24,9 +24,7 @@ public class SwitchEntry extends Entry {
         super.onClicked();
         mSwitch.toggle();
 
-        if (mChangeListener != null) {
-            mChangeListener.onEntryChanged(this, mSwitch.isChecked());
-        }
+        onChanged(mSwitch.isChecked());
     }
 
     public boolean isChecked() {

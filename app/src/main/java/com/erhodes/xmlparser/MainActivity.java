@@ -9,6 +9,7 @@ import android.view.Menu;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import org.xmlpull.v1.XmlPullParserException;
@@ -20,6 +21,8 @@ public class MainActivity extends AppCompatActivity implements Entry.OnChangeLis
     MenuScreen mMenuScreen;
     SpacesManager mSpacesManager;
 
+    Entry mFirstEntry;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,8 +33,18 @@ public class MainActivity extends AppCompatActivity implements Entry.OnChangeLis
         mMenuScreen = (MenuScreen)findViewById(R.id.listView);
         mMenuScreen.addEntriesFromXml(R.xml.space_details);
 
+        Button button = (Button)findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mMenuScreen.removeEntry(mFirstEntry);
+            }
+        });
+
         Entry bluetoothEntry = mMenuScreen.findEntry("bluetooth_restriction");
         bluetoothEntry.setOnChangeListener(this);
+
+        mFirstEntry = mMenuScreen.findEntry("test_group");
 /*
         ResourceXmlParser resourceParser = new ResourceXmlParser();
         try {

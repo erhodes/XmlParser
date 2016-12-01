@@ -22,6 +22,10 @@ public class Entry {
         mSummary = summary;
     }
 
+    public void setEnabled(boolean enabled) {
+        //todo: implement this
+    }
+
     public void setOnClickListener(OnClickListener listener) {
         mClickListener = listener;
     }
@@ -45,6 +49,12 @@ public class Entry {
     protected void onClicked() {
         if (mClickListener != null) {
             mClickListener.onEntryClicked();
+        }
+    }
+
+    protected void onChanged(Object newValue) {
+        if (mChangeListener != null) {
+            mChangeListener.onEntryChanged(this, newValue);
         }
     }
 

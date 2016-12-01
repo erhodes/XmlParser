@@ -2,7 +2,7 @@
 <feed xmlns:android="http://schemas.android.com/apk/res/android">
     <entry
         android:name="@string/test_string"
-        android:key="key test 1"
+        android:key="key1"
         android:summary="@string/resource_string"/>
     <entry
         android:name="attribute test 2"
@@ -12,4 +12,18 @@
         android:name="Bluetooth I guess"
         android:key="bluetooth_restriction"
         android:summary="This is the toggle for the bluetooth"/>
+    <dialog_entry
+        android:name="Dialog Entry"
+        android:key="dialog_key"
+        android:summary="Default"/>
+    <entry_group
+        android:name="A group"
+        android:key="test_group"
+        android:summary="">
+        <entry
+            android:name="subentry"
+            android:key="subkey"
+            android:summary="sub summary" />
+    </entry_group>
+
 </feed>
