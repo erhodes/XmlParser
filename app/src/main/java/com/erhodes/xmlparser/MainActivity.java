@@ -1,27 +1,17 @@
 package com.erhodes.xmlparser;
 
-import android.content.Context;
-import android.os.UserHandle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
-import android.view.Menu;
 import android.view.View;
-import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ListView;
+import android.widget.TextView;
 
-import org.xmlpull.v1.XmlPullParserException;
-
-import java.io.IOException;
-import java.util.List;
-
-public class MainActivity extends AppCompatActivity implements Entry.OnChangeListener{
+public class MainActivity extends AppCompatActivity implements Entry.OnChangeListener {
     MenuScreen mMenuScreen;
     SpacesManager mSpacesManager;
 
-    Entry mFirstEntry;
+    Entry mFirstEntry, mBluetoothEntry, mDialogEntry, mSubDialogEntry, mSubEntry;
+    TextView mTextView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,10 +31,23 @@ public class MainActivity extends AppCompatActivity implements Entry.OnChangeLis
             }
         });
 
-        Entry bluetoothEntry = mMenuScreen.findEntry("bluetooth_restriction");
-        bluetoothEntry.setOnChangeListener(this);
+        mBluetoothEntry = mMenuScreen.findEntry("bluetooth_restriction");
+        mBluetoothEntry.setOnChangeListener(this);
 
         mFirstEntry = mMenuScreen.findEntry("test_group");
+
+        mDialogEntry = mMenuScreen.findEntry("dialog_key");
+        if (mDialogEntry != null) {
+            mDialogEntry.setOnChangeListener(this);
+        }
+
+        mSubDialogEntry = mMenuScreen.findEntry("subswitchkey");
+        mSubDialogEntry.setOnChangeListener(this);
+
+        mSubEntry = mMenuScreen.findEntry("subentry");
+
+        mTextView = (TextView)findViewById(R.id.textView);
+        mTextView.setEnabled(false);
 /*
         ResourceXmlParser resourceParser = new ResourceXmlParser();
         try {
@@ -63,28 +66,21 @@ public class MainActivity extends AppCompatActivity implements Entry.OnChangeLis
     public void onEntryChanged(Entry entry, Object newValue) {
         if (entry instanceof SwitchEntry) {
             boolean isChecked = (Boolean)newValue;
+            mTextView.setEnabled(isChecked);
+            mSubDialogEntry.setEnabled(isChecked);
             if (isChecked) {
                 mSpacesManager.addSpaceRestriction(0, entry.mKey);
             } else {
                 mSpacesManager.clearSpaceRestriction(0, entry.mKey);
             }
+        } else if (entry instanceof DialogEntry) {
+            String value = (String)newValue;
+            if (value.equals("no")) {
+                mBluetoothEntry.setEnabled(false);
+            } else {
+                mBluetoothEntry.setEnabled(true);
+            }
+            mMenuScreen.invalidate();
         }
     }
-/*
-    public void pullUsingRaw() {
-        DetailsXmlParser parser = new DetailsXmlParser();
-        //XmlResourceParser xmlParser = getResources().getXml(R.xml.space_details);
-        InputStream stream = getResources().openRawResource(R.raw.space_details);
-        try {
-            List<Entry> entries = parser.parse(stream);
-            Log.d("Eric","read in " + entries.size() + " entries");
-            mAdapter = new EntryAdapter(this, 0, entries);
-            mListView.setAdapter(mAdapter);
-        } catch (XmlPullParserException | IOException e) {
-            Log.d("Eric","that's a problem");
-            e.printStackTrace();
-        }
-    }
-*/
-
 }

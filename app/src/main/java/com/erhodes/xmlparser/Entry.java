@@ -1,6 +1,7 @@
 package com.erhodes.xmlparser;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.TextView;
@@ -10,20 +11,32 @@ import android.widget.TextView;
  */
 
 public class Entry {
+    protected MenuScreen mMenuScreen;
     protected String mKey, mTitle, mSummary;
     protected OnClickListener mClickListener;
     protected OnChangeListener mChangeListener;
+    protected TextView mTitleView, mSummaryView;
+    protected View mView;
 
 
-
-    Entry(String key, String title, String summary) {
+    Entry(String key, String title, String summary, MenuScreen menuScreen) {
         mKey = key;
         mTitle = title;
         mSummary = summary;
+        mMenuScreen = menuScreen;
     }
 
     public void setEnabled(boolean enabled) {
-        //todo: implement this
+        Log.d("Eric","setting entry to " + enabled);
+        if (mView != null) {
+            mView.setEnabled(enabled);
+        }
+        if (mTitleView != null) {
+            mTitleView.setEnabled(enabled);
+        }
+        if (mSummaryView != null) {
+            mSummaryView.setEnabled(enabled);
+        }
     }
 
     public void setOnClickListener(OnClickListener listener) {
@@ -42,10 +55,6 @@ public class Entry {
         return mChangeListener;
     }
 
-    public class ViewHolder {
-        TextView titleView, summaryView;
-    }
-
     protected void onClicked() {
         if (mClickListener != null) {
             mClickListener.onEntryClicked();
@@ -59,24 +68,20 @@ public class Entry {
     }
 
     public View getView(View convertView, LayoutInflater inflater, Context context) {
-        ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.entry_basic, null);
-            holder = new ViewHolder();
-            holder.titleView = (TextView)convertView.findViewById(R.id.title);
-            holder.summaryView = (TextView)convertView.findViewById(R.id.summary);
+            mTitleView = (TextView)convertView.findViewById(R.id.title);
+            mSummaryView = (TextView)convertView.findViewById(R.id.summary);
+            mView = convertView;
             convertView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     onClicked();
                 }
             });
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder)convertView.getTag();
         }
-        holder.titleView.setText(mTitle);
-        holder.summaryView.setText(mSummary);
+        mTitleView.setText(mTitle);
+        mSummaryView.setText(mSummary);
 
         return convertView;
     }

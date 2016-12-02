@@ -43,14 +43,21 @@ public class MenuScreen extends ListView {
     }
 
     public void update() {
-        mAdapter.notifyDataSetChanged();
-        invalidate();
-    }
-
-    public void removeEntry(Entry entry) {
-        mEntries.remove(entry);
+        Log.d("Eric","updated has been called");
         mAdapter = new EntryAdapter(getContext(), mEntries);
         setAdapter(mAdapter);
+//        mAdapter.notifyDataSetChanged();
+//        invalidate();
+//        invalidateViews();
+    }
+
+    public boolean removeEntry(Entry entry) {
+        boolean removed = mEntries.remove(entry);
+        if (removed) {
+            mAdapter = new EntryAdapter(getContext(), mEntries);
+            setAdapter(mAdapter);
+        }
+        return removed;
     }
 
     /**
@@ -60,7 +67,14 @@ public class MenuScreen extends ListView {
      */
     public Entry findEntry(String key) {
         for (Entry entry : mEntries) {
-            if (entry.mKey.equals(key)) {
+            //Log.d("Eric","checking entry " + entry.mKey);
+            if (entry instanceof EntryGroup) {
+                //Log.d("Eric","this one is a group, check it's entries as well");
+                Entry subEntry = ((EntryGroup) entry).findEntry(key);
+                if (subEntry != null) {
+                    return subEntry;
+                }
+            } else if (entry.mKey.equals(key)) {
                 return entry;
             }
         }

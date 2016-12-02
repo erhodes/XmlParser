@@ -11,6 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"
+        android:textColor="@color/entry_text"
         android:id="@+id/textView" />
 
     <com.erhodes.xmlparser.MenuScreen

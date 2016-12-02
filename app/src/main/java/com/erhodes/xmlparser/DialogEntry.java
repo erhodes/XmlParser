@@ -11,12 +11,10 @@ import android.content.DialogInterface;
 
 public class DialogEntry extends Entry {
     Context mContext;
-    MenuScreen mMenuScreen;
 
     DialogEntry(String key, String title, String summary, Context context, MenuScreen menuScreen) {
-        super(key, title, summary);
+        super(key, title, summary, menuScreen);
         mContext = context;
-        mMenuScreen = menuScreen;
     }
 
     @Override

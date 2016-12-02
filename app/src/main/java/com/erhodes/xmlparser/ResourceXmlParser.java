@@ -43,24 +43,24 @@ public class ResourceXmlParser {
         int eventType = parser.getEventType();
         while (eventType != XmlPullParser.END_DOCUMENT) {
             if(eventType == XmlPullParser.START_TAG) {
-                //Log.d("Eric","start tag with name " + parser.getName() + " with attributes " + parser.getAttributeCount());
-                if (parser.getName().equals(TAG_ENTRY)) {
-//                    Log.d("Eric","entry with name " + parser.getAttributeName(0) + " and value " + parser.getAttributeValue(XML_NAMESPACE_ANDROID, "name"));
-//                    Log.d("Eric","namespace " + parser.getNamespace());
-//                    Log.d("Eric","attribute namespace " + parser.getAttributeNamespace(0));
-                    entries.add(readEntry(parser));
-                } else if (parser.getName().equals(TAG_SWITCH_ENTRY)) {
-                    entries.add(readSwitchEntry(parser));
-                } else if (parser.getName().equals(TAG_ENTRY_GROUP)) {
-                    entries.add(readEntryGroup(parser));
-                } else if (parser.getName().equals(TAG_DIALOG_ENTRY)) {
-                    entries.add(readDialogEntry(parser));
-                }
+                readStartTag(parser, entries);
             }
             eventType = parser.next();
         }
 
         return entries;
+    }
+
+    private void readStartTag(XmlResourceParser parser, List<Entry> entries) throws XmlPullParserException, IOException {
+        if (parser.getName().equals(TAG_ENTRY)) {
+            entries.add(readEntry(parser));
+        } else if (parser.getName().equals(TAG_SWITCH_ENTRY)) {
+            entries.add(readSwitchEntry(parser));
+        } else if (parser.getName().equals(TAG_ENTRY_GROUP)) {
+            entries.add(readEntryGroup(parser));
+        } else if (parser.getName().equals(TAG_DIALOG_ENTRY)) {
+            entries.add(readDialogEntry(parser));
+        }
     }
 
     private String getStringResource(XmlResourceParser parser, String namespace, String attribute) {
@@ -79,7 +79,7 @@ public class ResourceXmlParser {
         String key = parser.getAttributeValue(XML_NAMESPACE_ANDROID, ATTRIBUTE_KEY);
         String summary = getStringResource(parser, XML_NAMESPACE_ANDROID, ATTRIBUTE_SUMMARY);
 
-        return new Entry(key, name, summary);
+        return new Entry(key, name, summary, mMenuScreen);
     }
 
     private Entry readSwitchEntry(XmlResourceParser parser) {
@@ -87,7 +87,7 @@ public class ResourceXmlParser {
         String key = parser.getAttributeValue(XML_NAMESPACE_ANDROID, ATTRIBUTE_KEY);
         String summary = getStringResource(parser, XML_NAMESPACE_ANDROID, ATTRIBUTE_SUMMARY);
 
-        return new SwitchEntry(key, name, summary);
+        return new SwitchEntry(key, name, summary, mMenuScreen);
     }
 
     private Entry readDialogEntry(XmlResourceParser parser) {
@@ -109,20 +109,11 @@ public class ResourceXmlParser {
         int eventType = parser.next();
         while (!(eventType == XmlPullParser.END_TAG && parser.getName().equals(TAG_ENTRY_GROUP))) {
             if(eventType == XmlPullParser.START_TAG) {
-                //Log.d("Eric","start tag with name " + parser.getName() + " with attributes " + parser.getAttributeCount());
-                if (parser.getName().equals(TAG_ENTRY)) {
-//                    Log.d("Eric","entry with name " + parser.getAttributeName(0) + " and value " + parser.getAttributeValue(XML_NAMESPACE_ANDROID, "name"));
-//                    Log.d("Eric","namespace " + parser.getNamespace());
-//                    Log.d("Eric","attribute namespace " + parser.getAttributeNamespace(0));
-                    entries.add(readEntry(parser));
-                } else if (parser.getName().equals(TAG_SWITCH_ENTRY)) {
-                    entries.add(readSwitchEntry(parser));
-                } else if (parser.getName().equals(TAG_ENTRY_GROUP)) {
-                    entries.add(readEntryGroup(parser));
-                }
+                readStartTag(parser, entries);
             }
             eventType = parser.next();
         }
-        return new EntryGroup(key, name, summary, entries);
+        Log.d("Eric","entry group consists of " + entries.size() + " entries");
+        return new EntryGroup(key, name, summary, mMenuScreen, entries);
     }
 }

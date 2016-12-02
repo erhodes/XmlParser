@@ -1,6 +1,7 @@
 package com.erhodes.xmlparser;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -11,12 +12,11 @@ import android.widget.TextView;
  * Created by eric on 29/11/16.
  */
 public class SwitchEntry extends Entry {
-    TextView mTitleView, mSummaryView;
     LinearLayout mWidgetView;
     Switch mSwitch;
 
-    SwitchEntry(String key, String title, String summary) {
-        super(key, title, summary);
+    SwitchEntry(String key, String title, String summary, MenuScreen menuScreen) {
+        super(key, title, summary, menuScreen);
     }
 
     @Override
@@ -27,19 +27,26 @@ public class SwitchEntry extends Entry {
         onChanged(mSwitch.isChecked());
     }
 
+    @Override
+    public void setEnabled(boolean enabled) {
+        super.setEnabled(enabled);
+        if (mSwitch != null) {
+            mSwitch.setEnabled(enabled);
+        }
+    }
+
     public boolean isChecked() {
         return mSwitch == null? false : mSwitch.isChecked();
     }
 
     @Override
     public View getView(View convertView, LayoutInflater inflater, Context context) {
-        ViewHolder holder;
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.entry_basic, null);
-            holder = new ViewHolder();
             mTitleView = (TextView)convertView.findViewById(R.id.title);
             mSummaryView = (TextView)convertView.findViewById(R.id.summary);
             mWidgetView = (LinearLayout)convertView.findViewById(R.id.widget_frame);
+            mView = convertView;
             mSwitch = new Switch(context);
             mSwitch.setClickable(false);
             mWidgetView.addView(mSwitch);
@@ -49,9 +56,6 @@ public class SwitchEntry extends Entry {
                     onClicked();
                 }
             });
-            convertView.setTag(holder);
-        } else {
-            holder = (ViewHolder)convertView.getTag();
         }
         mTitleView.setText(mTitle);
         mSummaryView.setText(mSummary);

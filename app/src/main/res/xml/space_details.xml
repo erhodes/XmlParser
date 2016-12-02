@@ -24,6 +24,14 @@
             android:name="subentry"
             android:key="subkey"
             android:summary="sub summary" />
+        <entry
+            android:name="subentry2"
+            android:key="subkey2"
+            android:summary="sub summary2" />
+        <dialog_entry
+            android:name="subDialog"
+            android:key="subswitchkey"
+            android:summary="sub dialog summary"/>
     </entry_group>
 
 </feed>
