@@ -28,6 +28,7 @@ public class MenuScreen extends ListView {
 
     public MenuScreen(Context context, AttributeSet attrs) {
         super(context, attrs);
+        this.setDivider(null);
     }
 
     public void addEntriesFromXml(int resId) {

@@ -1,6 +1,7 @@
 package com.erhodes.xmlparser;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +19,12 @@ public class EntryAdapter extends ArrayAdapter<Entry> {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        return getItem(position).getView(convertView, mLayoutInflater, getContext());
+        Entry entry = getItem(position);
+        convertView = entry.getView(convertView, mLayoutInflater, getContext());
+        if (position == 0) {
+            entry.setDividerVisibility(View.INVISIBLE);
+            Log.d("Eric","the top entry is " + getItem(position).mKey);
+        }
+        return convertView;
     }
 }

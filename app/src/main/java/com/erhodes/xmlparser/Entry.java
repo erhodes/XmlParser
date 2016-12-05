@@ -16,7 +16,7 @@ public class Entry {
     protected OnClickListener mClickListener;
     protected OnChangeListener mChangeListener;
     protected TextView mTitleView, mSummaryView;
-    protected View mView;
+    protected View mView, mDivider;
 
 
     Entry(String key, String title, String summary, MenuScreen menuScreen) {
@@ -67,18 +67,31 @@ public class Entry {
         }
     }
 
+    /**
+     * Set the visibility of the divider. Should be one of {@link View#GONE}
+     * @param visibility
+     */
+    public void setDividerVisibility(int visibility) {
+        mDivider.setVisibility(visibility);
+    }
+
+    protected void initializeViews(View convertView) {
+        mTitleView = (TextView)convertView.findViewById(R.id.title);
+        mSummaryView = (TextView)convertView.findViewById(R.id.summary);
+        mView = convertView;
+        mDivider = convertView.findViewById(R.id.divider);
+        convertView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onClicked();
+            }
+        });
+    }
+
     public View getView(View convertView, LayoutInflater inflater, Context context) {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.entry_basic, null);
-            mTitleView = (TextView)convertView.findViewById(R.id.title);
-            mSummaryView = (TextView)convertView.findViewById(R.id.summary);
-            mView = convertView;
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onClicked();
-                }
-            });
+            initializeViews(convertView);
         }
         mTitleView.setText(mTitle);
         mSummaryView.setText(mSummary);

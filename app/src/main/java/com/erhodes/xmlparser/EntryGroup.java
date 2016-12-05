@@ -32,9 +32,7 @@ public class EntryGroup extends Entry {
      * @return
      */
     public Entry findEntry(String key) {
-        //Log.d("Eric","checking subgroup for entry " + key);
         for (Entry entry : mSubEntries) {
-            //Log.d("Eric","checking entry " + entry.mKey);
             if (entry.mKey.equals(key)) {
                 return entry;
             }
@@ -55,9 +53,20 @@ public class EntryGroup extends Entry {
         if (convertView == null) {
             Log.d("Eric","creating view and there's " + mSubEntries.size() + " entries");
             convertView = inflater.inflate(R.layout.entry_heading, null);
+            initializeViews(convertView);
+
+            for (int i = 0; i < mSubEntries.size(); i++) {
+                Entry entry = mSubEntries.get(i);
+                ((LinearLayout)convertView).addView(entry.getView(null, inflater, context));
+                if (i == 0) {
+                    entry.setDividerVisibility(View.INVISIBLE);
+                }
+            }
+/*
             for (Entry entry : mSubEntries) {
                 ((LinearLayout)convertView).addView(entry.getView(null, inflater, context));
             }
+            */
         }
 
         //mAdapter = new EntryAdapter(context, mSubEntries);

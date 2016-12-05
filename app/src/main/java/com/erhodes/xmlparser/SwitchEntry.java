@@ -43,19 +43,11 @@ public class SwitchEntry extends Entry {
     public View getView(View convertView, LayoutInflater inflater, Context context) {
         if (convertView == null) {
             convertView = inflater.inflate(R.layout.entry_basic, null);
-            mTitleView = (TextView)convertView.findViewById(R.id.title);
-            mSummaryView = (TextView)convertView.findViewById(R.id.summary);
+            initializeViews(convertView);
             mWidgetView = (LinearLayout)convertView.findViewById(R.id.widget_frame);
-            mView = convertView;
             mSwitch = new Switch(context);
             mSwitch.setClickable(false);
             mWidgetView.addView(mSwitch);
-            convertView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    onClicked();
-                }
-            });
         }
         mTitleView.setText(mTitle);
         mSummaryView.setText(mSummary);

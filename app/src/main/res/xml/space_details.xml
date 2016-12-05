@@ -33,5 +33,8 @@
             android:key="subswitchkey"
             android:summary="sub dialog summary"/>
     </entry_group>
-
+    <entry
+        android:name="attribute test 3"
+        android:key="key3"
+        android:summary="summary test3"/>
 </feed>
