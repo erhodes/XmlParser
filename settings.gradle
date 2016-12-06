@@ -1,1 +1,7 @@
 include ':app'
+
+include ':SpacesManager'
+project(':SpacesManager').projectDir = new File(settingsDir, '../SpacesManager')
+
+include ':SpaceAppLibrary'
+project(':SpaceAppLibrary').projectDir = new File(settingsDir, '../SpaceAppLibrary/app')

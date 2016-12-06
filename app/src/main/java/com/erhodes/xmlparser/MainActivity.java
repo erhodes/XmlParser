@@ -6,6 +6,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.securespaces.android.spaceapplibrary.entries.DialogEntry;
+import com.securespaces.android.spaceapplibrary.entries.Entry;
+import com.securespaces.android.spaceapplibrary.entries.MenuScreen;
+import com.securespaces.android.spaceapplibrary.entries.SwitchEntry;
+import com.securespaces.android.ssm.SpacesManager;
+
 public class MainActivity extends AppCompatActivity implements Entry.OnChangeListener {
     MenuScreen mMenuScreen;
     SpacesManager mSpacesManager;
@@ -69,9 +75,9 @@ public class MainActivity extends AppCompatActivity implements Entry.OnChangeLis
             mTextView.setEnabled(isChecked);
             mSubDialogEntry.setEnabled(isChecked);
             if (isChecked) {
-                mSpacesManager.addSpaceRestriction(0, entry.mKey);
+                //mSpacesManager.addSpaceRestriction(0, entry.mKey);
             } else {
-                mSpacesManager.clearSpaceRestriction(0, entry.mKey);
+                //mSpacesManager.clearSpaceRestriction(0, entry.mKey);
             }
         } else if (entry instanceof DialogEntry) {
             String value = (String)newValue;
