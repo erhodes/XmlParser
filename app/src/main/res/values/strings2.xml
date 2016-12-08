@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?><!--
+  GRAPHITE SOFTWARE CONFIDENTIAL
+
+  Copyright 2013-2015. Graphite Software Corporation. All Rights Reserved.
+
+  NOTICE: All information contained herein is, and remains the property of
+  Graphite Software Corporation and its suppliers, if any. The intellectual and
+  technical concepts contained herein are proprietary to Graphite Software
+  Corporation and its suppliers and may be covered by Canada, U.S. and Foreign
+  Patents, patents in process, and are protected by trade secret or copyright
+  law. Dissemination of this information or reproduction of this material is
+  strictly forbidden unless prior written permission is obtained from Graphite
+  Software Corporation.
+-->
+<resources>
+
+    <!-- Activity and application names -->
+
+    <!-- Strings used by settings -->
+    <string name="secure_spaces_settings_title">Spaces Settings</string>
+    <!-- Space settings section title for list of spaces [CHAR LIMIT=25] -->
+    <!-- Space name title for list of spaces labels [CHAR LIMIT=25] -->
+    <string name="pref_extra_register_owner_space_title">Register Space</string>
+    <!-- User removal confirmation title [CHAR LIMIT=25] -->
+    <string name="space_confirm_remove_title">Remove Secure Space?</string>
+
+
+    <!-- Space settings add space menu [CHAR LIMIT=20] -->
+    <!-- Space summary to indicate that space is currently active in the background [CHAR LIMIT=100] -->
+
+    <!-- Space details new space name [CHAR LIMIT=30] -->
+
+    <!-- Space type labels [CHAR LIMIT=20] -->
+    <!-- string name="space_type_label_work">Work</string -->
+
+    <!-- Space removal confirmation message [CHAR LIMIT=none] -->
+    <string name="space_confirm_remove_message">This Secure Space and all data within it will disappear from this device. You can\'t undo this action.</string>
+    <string name="space_remove_button">Remove</string>
+
+    <!-- Icon Selection Strings -->
+
+    <!-- TODO: Figure out what these help settings do exactly -->
+    <string name="help_label">Help</string>
+    <!-- Help URL, User settings [DO NOT TRANSLATE] -->
+    <!-- Client help URL [DO NOT TRANSLATE] -->
+    <string name="help_url" translatable="false">http://securespaces.com/client-help/</string>
+
+    <!-- Launching settings from URIs -->
+
+    <!-- Debug menu -->
+
+    <!-- Common strings -->
+
+    <!-- Not Owner User Dialog -->
+
+    <!-- QR Code -->
+    <string name="qr_code_message">Scan a QR code to create a Secure Space.</string>
+
+    <!-- No Network Dialog -->
+
+    <!-- About Secure Spaces Dialog -->
+
+    <!-- Space Status Strings -->
+    <string name="status_registering">Registering &#8230;</string>
+    <string name="status_authorizing">Authorizing...</string>
+    <string name="status_invitation_reuse_error">Invitation already used</string>
+    <string name="status_registration_error">Registration error</string>
+    <string name="status_invalid_invitation_error">Invitation is no longer valid</string>
+    <string name="status_ok">OK</string>
+    <string name="status_error">Error</string>
+
+
+    <string name="delete_user_data_title">Delete all user data</string>
+    <string name="confirm_delete_user_data_message">Do you want to delete user data from the space?\n\nYou will not be able to undo this action.</string>
+    <string name="confirm_delete_user_data_button">Delete</string>
+    <string name="space_confirm_auto_clean_message">This will delete all local user data each time you exit this Space.</string>
+    <string name="delete_user_data_while_stopped_not_supported">Delete user data operation is not supported when the Space is stopped.\n\nA Space can be started by entering the Space.</string>
+
+    <string name="pref_notification_summary_hidden_space">Cannot be enabled for Hidden Spaces</string>
+    <string name="pref_space_mgmt_screen_lock_summary">Enable the ability to set a screen lock</string>
+    <string name="pref_space_mgmt_screen_lock_title">Screen lock allowed</string>
+    <string name="pref_connections_nfc_title">NFC</string>
+    <string name="pref_connections_nfc_summary">Enable NFC in this space</string>
+    <string name="pref_space_mgmt_auto_clean_title">Delete user data on exit</string>
+    <string name="pref_space_mgmt_auto_clean_summary">Enable deletion of user data on exit</string>
+    <string name="pref_space_mgmt_lock_other_spaces_title">Lock other Spaces on entry</string>
+    <string name="pref_space_mgmt_lock_other_spaces_summary">Locks all other Spaces when entering this one</string>
+    <string name="pref_connections_network_access_title">Exclusive network access</string>
+    <string name="pref_connections_network_access_summary">While in this Space, other Spaces will not have network access</string>
+
+    <!-- Space Restrictions -->
+    <string name="pref_connections_location_title">Share location</string>
+    <string name="pref_connections_location_summary">Allow location sharing</string>
+    <string name="pref_applications_unknown_sources_title">Install from unknown sources</string>
+    <string name="pref_applications_unknown_sources_summary">Allow apps from unknown sources</string>
+    <string name="pref_phone_outgoing_calls_title">Outgoing calls</string>
+    <string name="pref_phone_outgoing_calls_summary">Allow outgoing calls</string>
+    <string name="pref_phone_sms_title">SMS</string>
+    <string name="pref_phone_sms_summary">Allow SMS messaging</string>
+    <string name="pref_debug_debugging_title">Debugging</string>
+    <string name="pref_debug_debugging_summary">Allow debugging</string>
+    <string name="pref_connections_bluetooth_title">Bluetooth</string>
+    <string name="pref_connections_bluetooth_summary">Allow Bluetooth while in this Space</string>
+    <string name="pref_space_mgmt_stop_space_on_exit_title">Stop Space on exit</string>
+    <string name="pref_space_mgmt_stop_space_on_exit_summary">Ensure the Space is stopped on exit</string>
+    <string name="pref_recording_screenshot_title">Screenshot</string>
+    <string name="pref_recording_screenshot_summary">Allow taking Screenshots</string>
+    <string name="pref_recording_microphone_title">Microphone</string>
+    <string name="pref_recording_microphone_summary">Allow recording with microphone</string>
+    <string name="pref_debug_read_device_info_title">Read Device Info</string>
+    <string name="pref_debug_read_device_info_summary">Allow reading device info from the system</string>
+    <string name="pref_connections_mobile_only_title">Mobile only</string>
+    <string name="pref_connections_mobile_only_summary">Restricts this Space to using mobile networks</string>
+    <string name="pref_applications_allow_installs_title">App installs</string>
+    <string name="pref_applications_allow_installs_summary">Allow the user to install apps</string>
+    <string name="pref_space_mgmt_add_users_title">Allow adding users</string>
+    <string name="pref_space_mgmt_add_users_summary">Enable the creation of new users</string>
+    <string name="pref_space_mgmt_add_spaces_title">Allow adding Spaces</string>
+    <string name="pref_space_mgmt_add_spaces_summary">Enable the creation of new Spaces</string>
+    <string name="pref_space_mgmt_exit_on_sleep_title">Exit on sleep: %s</string>
+    <string name="pref_space_mgmt_exit_on_sleep_dialog_title">Exit on Sleep</string>
+    <string name="pref_space_mgmt_exit_on_sleep_summary">For better security, switch to the Owner Space on sleep, after this delay</string>
+    <string name="never_exit_on_sleep">never</string>
+
+    <!-- Crop -->
+
+    <!--  Register Owner Space -->
+    <string name="toast_register_owner_success">Owner space is being registered...</string>
+    <string name="toast_no_network">No network connection, check your network status.</string>
+    <string name="toast_register_owner_error_qr">QR Code was invalid.</string>
+    <string name="license_url" translatable="false">http://securespaces.com/license-terms/</string>
+    <string name="secure_spaces_url" translatable="false">http://securespaces.com/</string>
+
+    <!--  Space Setup -->
+    <string name="space_setup_wizard_empty_name">Space name cannot be empty.</string>
+
+    <!-- Contact Strings -->
+
+    <!-- App management page -->
+
+    <!-- Phone Account Config -->
+    <string name="title_activity_sim_management">SIM Management</string>
+    <string name="menu_phone_accounts">SIM Cards</string>
+    <string name="default_notification_description">Default</string>
+    <string name="ringtone_silent">Silent</string>
+    <string name="ringtone_unknown">Unknown</string>
+    <string name="all_spaces">All Spaces</string>
+    <string name="phone_account_unknown">Unknown</string>
+    <string name="no_sim_available">No SIM available</string>
+
+    <string name="pref_screen_title_phone_account">Configure SIM Cards</string>
+    <string name="pref_title_ringtone">Ringtone</string>
+    <string name="pref_title_assign_to_space">Assign Phone Number to Space</string>
+    <string name="pref_title_assign_sms_to_space">Assign Incoming SMS to Space</string>
+    <string name="pref_title_system_call_settings">System Call Settings</string>
+    <string name="phone_config_help">Assign your phone numbers to different Spaces. Select a SIM or VoIP account to configure below.</string>
+    <string name="help_action_title">Help</string>
+    <string name="phone_config_details_help_title">Configuration Help</string>
+    <string name="phone_config_details_help"><![CDATA[
+
+    Assign your phone number to another Space, and optionally configure a distinct ringtone.
+    <br/><br/>
+    Phone numbers assigned to a Space store all call logs in that space,
+    and phone calls made from that Space are made using the assigned number.
+    You can still make and receive calls using this number from other
+    Spaces.
+    <br/><br/>
+    Assigning SMS to a Space, ensures that all incoming SMS messages are
+    sent to that Space. You can still send SMS messages from other Spaces.
+
+    ]]></string>
+
+
+    <!-- Setup Wizard Stuff -->
+
+    <string name="abbreviated_hour">%dh</string>
+    <string name="abbreviated_minute">%dm</string>
+    <string name="abbreviated_second">%ds</string>
+    <string name="one_minute">1 minute</string>
+    <string name="two_minutes">2 minutes</string>
+    <string name="five_minutes">5 minutes</string>
+    <string name="ten_minutes">10 minutes</string>
+    <string name="thirty_minutes">30 minutes</string>
+    <string name="fifteen_seconds">15 seconds</string>
+    <string name="thirty_seconds">30 seconds</string>
+    <string name="pref_cross_space_notifications_default_state" translatable="false">2</string>
+
+    <!-- Entry strings used as the selection values in the dialog -->
+    <string name="cross_space_notification_state_entry_disabled">No cross space notification</string>
+    <string name="cross_space_notification_state_entry_badge_only">Badge notification only </string>
+    <string name="cross_space_notification_state_entry_hide_sensitive">Hide sensitive notification content</string>
+    <string name="cross_space_notification_state_entry_full">Show all notification content</string>
+
+    <!-- Summary string used to describe the state the Space has assigned -->
+    <string name="cross_space_notification_state_summary_disabled">Notifications only show within the Space</string>
+    <string name="cross_space_notification_state_summary_badge_only">Badge notification count only in other Spaces</string>
+    <string name="cross_space_notification_state_summary_hide_sensitive">Notification content will hide sensitive data in other Spaces</string>
+    <string name="cross_space_notification_state_summary_full">Full notification content will show in all Spaces</string>
+
+    <!-- Accessibility String -->
+
+    <!--
+         TODO: Copy the formats for different locals from the DeskClock app
+         if the clock ends up being a permanent feature
+    -->
+
+    <!-- Notifications -->
+
+    <!-- Button strings -->
+
+    <!-- For shortcuts -->
+
+
+    <string name="pref_details_widget_description">Details</string>
+
+    <string name="fragment_space_settings_title">Space Settings</string>
+    <!-- Preference Category Titles -->
+    <string name="prefs_cross_space_title">CROSS SPACE SETTINGS</string>
+    <string name="prefs_space_management_title">SPACE MANAGEMENT</string>
+    <string name="prefs_connections_title">CONNECTIONS</string>
+    <string name="prefs_phone_title">PHONE</string>
+    <string name="prefs_recording_title">RECORDING</string>
+    <string name="prefs_applications_title">APPLICATIONS</string>
+    <string name="prefs_sharing_title">SHARING</string>
+    <string name="prefs_debug_title">DEBUG</string>
+
+    <string name="pref_space_name_title">Space name</string>
+    <string name="pref_cross_space_notifications_title">Notifications</string>
+    <string name="pref_cross_space_notifications_summary">Notification behavior across Spaces</string>
+    <string name="pref_cross_space_sim_cards_title">SIM cards</string>
+    <string name="pref_sharing_into_space_title">Sharing into Space</string>
+    <string name="pref_sharing_into_space_summary">Enable the ability for other spaces to share their data into this space</string>
+    <string name="pref_sharing_out_of_space_title">Sharing out of Space</string>
+    <string name="pref_sharing_out_of_space_summary">Enable the ability to share data from this space, out to other spaces</string>
+    <string name="pref_extra_delete_space_title">Delete Space</string>
+    <string name="pref_extra_delete_user_data_title">Delete User Data</string>
+    <string name="pref_space_mgmt_disallow_physical_media_title">External Media</string>
+    <string name="pref_space_mgmt_disallow_physical_media_summary">Enable mounting of media drives such as SD cards</string>
+    <string name="pref_recording_camera_title">Camera</string>
+    <string name="pref_recording_camera_summary">Disallow camera usage for the whole device</string>
+    <string name="pref_connections_usb_title">USB file transfer</string>
+    <string name="pref_connections_usb_summary">Enable file transfer over USB connection</string>
+
+    <!-- Password Recovery strings -->
+    <string name="pref_space_mgmt_password_recovery_title">Password recovery</string>
+    <string name="pref_space_mgmt_password_recovery_owner_space_summary">Recovers space if password recovery is enabled</string>
+    <string name="pref_space_mgmt_password_recovery_secondary_space_summary">Enable password recovery for this space</string>
+    <string name="fragment_password_recovery_title">Password Recovery</string>
+    <string name="fragment_password_recovery_success_title">Success</string>
+    <string name="fragment_password_recovery_success_summary">Congratulations, you have successfully registered your Space for Password Recovery.</string>
+    <string name="fragment_password_recovery_failure_title">Failed</string>
+    <string name="fragment_password_recovery_failure_summary">Oops&#8230; Something went wrong while attempting to register your Space for Password Recovery. Please try again later.</string>
+    <string name="fragment_password_recovery_wait_text">Please wait while authenticating account&#8230;</string>
+    <string name="password_recovery_provider_xiaomi_title">Xiaomi Account</string>
+    <string name="password_recovery_provider_google_title">Google Account</string>
+    <string name="password_recovery_information_owner_space">Please select the account used for password recovery.</string>
+    <string name="password_recovery_information_secondary_space">Please sign in with an account to enable password recovery.</string>
+
+    <!-- WebAuth Toast Messages -->
+    <string name="webauth_toast_msg_space_recovery_success">Space recovery successful.</string>
+    <string name="webauth_toast_msg_space_recovery_failed">Space recovery failed.</string>
+    <string name="webauth_toast_msg_profile_failure">Could not get profile.</string>
+    <string name="webauth_toast_msg_unexpected_results">Unexpected results type.</string>
+    <string name="webauth_toast_msg_profile_parse_error">Unable to parse profile.</string>
+    <string name="webauth_toast_msg_password_recovery_error">An error occurred while attempting to enable password recovery.</string>
+    <string name="webauth_toast_msg_network_unavailable_enable">Network must be available to enable password recovery.</string>
+    <string name="webauth_toast_msg_network_unavailable_recover">Network must be available to recover space.</string>
+    <string name="webauth_toast_msg_password_recovery_not_enabled">Password Recovery not enabled for this space.</string>
+    <string name="webauth_toast_msg_space_registration_incomplete">Space registration must be completed to be recovered.</string>
+    <string name="webauth_toast_msg_unexpected_recovery_error">Unexpected error while attempting to recover space.</string>
+    <string name="webauth_toast_msg_different_recovery_account">Recovery account is different from the one used to register. Please try again with the correct account.</string>
+    <string name="webauth_toast_msg_register_invalid_space">Cannot register invalid space.</string>
+    <string name="webauth_toast_msg_recover_invalid_space">Cannot recover invalid space.</string>
+    <string name="webauth_toast_msg_missing_service">No service matching space intent is present.</string>
+    <string name="webauth_toast_msg_server_recovery_error">Server error while recovering space.</string>
+
+    <!-- Private APN Settings -->
+    <string name="pref_connections_private_apns_title">Private Access Point Names</string>
+    <string name="pref_connections_private_apns_summary">Configure private APNs for this space</string>
+    <string name="fragment_private_apn_title">Private APN</string>
+    <string name="apn_configuration_data">Configuration</string>
+    <string name="apn_button_add_apn">Add APN</string>
+    <string name="apn_value_not_set">Not set</string>
+    <string name="apn_value_required">Required</string>
+    <string name="apn_enable_title">Enabled</string>
+    <string name="apn_name_title">Name</string>
+    <string name="apn_apn_title">APN</string>
+    <string name="apn_server_title">Server</string>
+    <string name="apn_username_title">Username</string>
+    <string name="apn_password_title">Password</string>
+    <string name="apn_type_title">APN Type</string>
+    <string name="apn_mcc_title">MCC</string>
+    <string name="apn_mnc_title">MNC</string>
+    <string name="apn_proxy_title">Proxy</string>
+    <string name="apn_port_title">Port</string>
+    <string name="apn_auth_type_title">Authentication Type</string>
+    <string name="apn_protocol_title">APN Protocol</string>
+
+    <string name="apn_authentication_type_none">None</string>
+    <string name="apn_authentication_type_pap">PAP</string>
+    <string name="apn_authentication_type_chap">CHAP</string>
+    <string name="apn_authentication_type_pap_or_chap">PAP or CHAP</string>
+
+    <string name="apn_protocol_ipv4">IPv4</string>
+    <string name="apn_protocol_ipv6">IPv6</string>
+    <string name="apn_protocol_ipv4v6">IPv4/IPv6</string>
+    
+    <string name="apn_entry_action_delete">Delete APN</string>
+    <string name="apn_entry_action_save">Save</string>
+    <string name="apn_entry_action_discard">Discard</string>
+    <string name="apn_entry_action_cancel">Cancel</string>
+
+    <!-- String used to represent the enabled APN. Empty string for the disabled state -->
+    <string name="apn_enabled_state_on">Enabled</string>
+    <string name="apn_enabled_state_off" translatable="false"></string>
+
+    <string name="apn_fragment_create_apn_title">Create APN</string>
+    <string name="apn_fragment_view_apn_title">View APN Details</string>
+    <string name="apn_fragment_edit_apn_title">Edit APN</string>
+
+    <string name="apn_dialog_discard_title">Required Field Empty</string>
+    <string name="apn_dialog_discard_message">One of the required fields is empty. Going back will discard any change."</string>
+
+    <string name="apn_dialog_save_title">Save APN Entry?</string>
+    <string name="apn_dialog_save_message_new">Would you like to save this new APN entry?</string>
+    <string name="apn_dialog_save_message_edit">Would you like to save changes made to this APN entry?</string>
+
+    <string name="apn_dialog_delete_title">Delete APN Entry?</string>
+    <string name="apn_dialog_delete_message">Are you sure you want to delete this APN entry? This action cannot be undone.</string>
+
+    <string name="toast_error_invalid_number">Invalid number.\nPlease enter a different value.</string>
+    <string name="toast_error_saving_apn">Error saving APN info.</string>
+
+    <!-- Permission Strings -->
+    <string name="permission_disabled_title">Permission Disabled</string>
+    <string name="permission_disabled_read_phone_state_msg">Please enable phone in the application\'s permissions settings.</string>
+</resources>

@@ -1,40 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns:android="http://schemas.android.com/apk/res/android">
     <Entry
-        android:name="@string/test_string"
+        android:title="@string/test_string"
         android:key="key1"
         android:summary="@string/resource_string"/>
+    <fakething
+        android:title="glar"
+        android:summary="whatever"
+        android:key="hrrmaer"/>
     <Entry
-        android:name="attribute test 2"
+        android:title="attribute test 2"
         android:key="key test 2"
         android:summary="summary test 2"/>
     <SwitchEntry
-        android:name="Bluetooth I guess"
+        android:title="Bluetooth I guess"
         android:key="bluetooth_restriction"
         android:summary="This is the toggle for the bluetooth"/>
     <DialogEntry
-        android:name="Dialog Entry"
+        android:title="Dialog Entry"
         android:key="dialog_key"
         android:summary="Default"/>
     <EntryGroup
-        android:name="A group"
+        android:title="A group"
         android:key="test_group"
         android:summary="">
         <Entry
-            android:name="subEntry"
+            android:title="subEntry"
             android:key="subkey"
             android:summary="sub summary" />
         <Entry
-            android:name="subEntry2"
+            android:title="subEntry2"
             android:key="subkey2"
             android:summary="sub summary2" />
         <DialogEntry
-            android:name="subDialog"
+            android:title="subDialog"
             android:key="subswitchkey"
             android:summary="sub dialog summary"/>
     </EntryGroup>
     <Entry
-        android:name="attribute test 3"
+        android:title="attribute test 3"
         android:key="key3"
         android:summary="summary test3"/>
 </feed>
