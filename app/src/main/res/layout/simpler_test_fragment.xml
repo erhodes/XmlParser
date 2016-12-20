@@ -14,7 +14,7 @@
         android:textColor="@color/entry_text"
         android:id="@+id/textView" />
 
-    <com.securespaces.android.spaceapplibrary.entries.MenuScreen
+    <ListView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="0dp"

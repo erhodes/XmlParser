@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Fragment fragment = new SimplerTestFragment();
+//        Fragment fragment = new TestFragment();
         getFragmentManager().beginTransaction()
                 .replace(R.id.content, fragment, "test")
                 .commit();

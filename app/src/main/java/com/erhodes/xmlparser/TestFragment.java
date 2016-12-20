@@ -6,6 +6,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.securespaces.android.spaceapplibrary.entries.DialogEntry;
@@ -64,6 +65,7 @@ public class TestFragment extends Fragment implements Entry.OnChangeListener {
     private static final String PREF_SWITCH_TEST = "switch_test";
 
     MenuScreen mMenuScreen;
+    ListView mListView;
     SpacesManager mSpacesManager;
 
     Entry mTestEntry, mSwitchTestEntry, mBluetoothEntry, mDialogEntry, mSubDialogEntry, mSubEntry;
@@ -78,7 +80,7 @@ public class TestFragment extends Fragment implements Entry.OnChangeListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.test_fragment, container, false);
-        mMenuScreen = (MenuScreen) view.findViewById(R.id.listView);
+        mListView = (ListView) view.findViewById(R.id.listView);
         mMenuScreen.addEntriesFromXml(R.xml.space_details_2);
 
         mSpacesManager = new SpacesManager(getActivity());
@@ -113,7 +115,6 @@ public class TestFragment extends Fragment implements Entry.OnChangeListener {
             } else {
                 mBluetoothEntry.setEnabled(true);
             }
-            mMenuScreen.invalidate();
         }
     }
 }

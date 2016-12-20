@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns:android="http://schemas.android.com/apk/res/android">
+    <SwitchEntry
+        android:title="Switch 1"
+        android:key="switch1"
+        android:summary="This is the first switch"/>
+    <SwitchEntry
+        android:title="Switch 2"
+        android:key="switch2"
+        android:summary="This is the second switch"/>
+    <Entry
+        android:title="Entry 1"
+        android:key="entry1"
+        android:summary="This is a regular entry!"/>
+    <DialogEntry
+        android:title="Dialog Entry 1"
+        android:key="dialog1"
+        android:summary="This is a dialog entry!"/>
+    <SingleButtonEntry
+        android:title="Button Entry 1"
+        android:key="button1" />
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+    <SwitchEntry
+        android:title="Test Switch"
+        android:key="switch_test"
+        android:summary="This is a test switch"/>
+
+</feed>
